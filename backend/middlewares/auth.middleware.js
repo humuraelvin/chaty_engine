@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const asyncHandler = require('express-async-handler');
 
-const protect = asyncHandler(async (req, res, next) => {
+const protectRoute = asyncHandler(async (req, res, next) => {
 
     let token;
 
@@ -28,4 +28,6 @@ const protect = asyncHandler(async (req, res, next) => {
         throw new Error("Not authorized not token provided")
     }
 
-})
+});
+
+module.exports = protectRoute;
