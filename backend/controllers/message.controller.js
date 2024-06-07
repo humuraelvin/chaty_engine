@@ -162,6 +162,31 @@ const addToGroup = asyncHandler(async (req, res) => {
 
     const added = await Chat.findByIdAndUpdate(
         chatId,
+        {
+            $push: { users: userId },
+        },
+        {
+            new: true,
+        }
     )
+        .populate("users", "-password")
+        .populate("groupAdmin", "-password");
+
+    if (!added) {
+        res.status(400)
+        throw new Error("User tyring to be added to group not found");
+    } else {
+        res.json(added)
+    }
 
 })
+
+
+module.exports = {
+    accessChat,
+    fetchChats,
+    createGroupChat,
+    renameGroup,
+    removeFromGroup,
+    addToGroup
+};
