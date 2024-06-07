@@ -34,4 +34,25 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error("User with provided email already exists");
     }
 
+    const user = await User.create({
+        name,
+        email,
+        password,
+        pic,
+    });
+
+    if (user) {
+        res.status(200).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            pic: user.pic,
+            token: generateToken(user._id),
+        });
+    } else {
+        res.status(400);
+        throw new Error("User registration failed");
+    }
+
 })
