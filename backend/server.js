@@ -47,3 +47,18 @@ const io = require('socket.io')(server, {
         origin: "http://localhost:8080",
     },
 });
+
+
+io.on("connection", (socket) => {
+    console.log("Connected to socket io");
+
+    socket.on("setup", (userData) => {
+        socket.join(userData._id);
+        socket.emit("connected");
+    });
+
+    socket.on("join chat", (room) => {
+        
+    })
+
+})
