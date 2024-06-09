@@ -84,3 +84,4 @@ const authUser = asyncHandler(async (req, res) => {
 
 module.exports = {allUsers, registerUser, authUser};
 
+
