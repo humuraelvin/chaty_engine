@@ -41,6 +41,8 @@ const server = app.listen(port, () => {
 })
 
 
+//-------Real time chat socketing
+
 const io = require('socket.io')(server, {
     pingTimeout: 60000,
     cors: {
