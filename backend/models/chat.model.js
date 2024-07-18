@@ -18,7 +18,7 @@ const chatModel = mongoose.model(
         }
     },
     {
-        timestamps: true,
+        timestamps: true
     }
 );
 
