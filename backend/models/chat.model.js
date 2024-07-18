@@ -20,4 +20,8 @@ const chatModel = mongoose.model(
     {
         timestamps: true,
     }
-)
+);
+
+const Chat = mongoose.model("Chat", chatModel);
+
+module.exports = Chat;
