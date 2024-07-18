@@ -16,5 +16,8 @@ const chatModel = mongoose.model(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
+    },
+    {
+        timestamps: true,
     }
 )
