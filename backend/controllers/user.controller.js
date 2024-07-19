@@ -11,8 +11,12 @@ const allUsers = asyncHandler(async(req, res) =>
             $or:[
                 {name:{$regex:req.query.search, $options:"i"}},
                 {email:{$regex:req.query.search, $options:"i"}}
-            ]
+            ],
         }
-    }
+    :{}
+
+
+}
+
 
 )
