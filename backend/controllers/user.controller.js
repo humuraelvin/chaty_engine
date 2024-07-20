@@ -18,5 +18,8 @@ const allUsers = asyncHandler(async(req, res) =>
     const users = await User.find(keyword).find({_id: {$ne:req.user._id}})
     res.status(200).send(users)
 
-}
-)
+})
+
+const registerUser = asyncHandler(async(req, res) => {
+    const
+})
