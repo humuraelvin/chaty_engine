@@ -54,7 +54,15 @@ const registerUser = asyncHandler(async(req, res) => {
             isAdmin: user.isAdmin,
             pic: user.pic,
             token: generateToken(user._id)
-        })
+        });
+    }else{
+        res.status(200)
+        throw new Error("User failed to be created")
     }
 
+})
+
+
+const loginUser = asyncHandler(async(req, res) => {
+    
 })
