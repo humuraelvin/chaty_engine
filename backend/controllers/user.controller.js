@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/user.model.js')
 const generateToken = require('../utils/generateToken.js')
+const bcrypt = require('bcryptjs')
 
 
 const allUsers = asyncHandler(async(req, res) => 
@@ -34,5 +35,7 @@ const registerUser = asyncHandler(async(req, res) => {
         res.status(400)
         throw new Error("User already exists")
     }
+
+    const salt = 10;
 
 })
