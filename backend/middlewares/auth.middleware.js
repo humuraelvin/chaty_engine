@@ -24,7 +24,8 @@ const protectRoute = asyncHandler(async(req, res, next) =>
         }
 
         if (!token) {
-            
+            res.status(400)
+            throw new Error("Not authorized , No token provided")
         }
 
     }
