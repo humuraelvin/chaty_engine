@@ -67,6 +67,10 @@ const loginUser = asyncHandler(async(req, res) => {
     
     const { email, password } = req.body;
 
-    const user = 
+    const user = await User.findOne({ email })
+
+    const validPassword = await bcrypt.compare(
+        password, user.password
+    )
 
 })
