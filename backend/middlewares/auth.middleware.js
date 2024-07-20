@@ -15,6 +15,16 @@ const protectRoute = asyncHandler(async(req, res, next) =>
 
             const validToken = jwt.verify(token, process.env.JWT_SECRET_KEY)
 
+            if (validToken) {
+                res.status(200)
+            }else{
+                throw new Error("Not authorized Invalid token provided")
+            }
+
+        }
+
+        if (!token) {
+            
         }
 
     }
