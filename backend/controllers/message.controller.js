@@ -44,7 +44,8 @@ const sendMessage = asyncHandler(async(req, res) =>
             message = await message.populate("sender", "name pic").execPopulate();
             message = await message.populate("chat").execPopulate();
             message = await User.populate(message, {
-                path:g
+                path: "chat.users",
+                select: "name pic email"
             })
 
         } catch (error) {
