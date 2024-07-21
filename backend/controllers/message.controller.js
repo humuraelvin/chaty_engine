@@ -50,7 +50,7 @@ const sendMessage = asyncHandler(async(req, res) =>
 
             await Chat.findByIdAndUpdate(req.body.chatId, { latestMessage: message })
 
-            
+            res.json(message)
 
         } catch (error) {
             
