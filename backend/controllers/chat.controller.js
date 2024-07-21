@@ -16,8 +16,8 @@ const accessChat = asyncHandler(async( req, res) =>
                 isGroupChat:false,
                 $and: [
                     { users: { $elemMatch: { $eq: req.user._id } } },
-                    { users: { $elemMatch: { $eq: userId } } }
-                ]
+                    { users: { $elemMatch: { $eq: userId } } },
+                ],
             })
         }
 
