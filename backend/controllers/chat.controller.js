@@ -84,4 +84,9 @@ const fetchChats = asyncHandler(async(req, res) => {
 })
 
 
+const createGroupChat = asyncHandler(async(req, res) => {
+    
+})
+
+
 
