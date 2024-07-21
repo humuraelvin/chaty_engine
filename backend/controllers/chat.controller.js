@@ -138,6 +138,13 @@ const renameGroup = asyncHandler(async(req, res) =>
       .populate("users", "-password")
       .populate("groupAdmin", "-password")
 
+    if (!updatedChat) {
+        res.status(500)
+        throw new Error("Chat failed to be updated")
+    }else{
+        res.json(updatedChat)
+    }
+
 })
 
 
