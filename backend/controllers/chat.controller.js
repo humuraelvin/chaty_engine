@@ -36,7 +36,16 @@ const accessChat = asyncHandler(async( req, res) =>
                     chatName: "sender",
                     isGroupChat: false,
                     users: [req.user._id, userId]
+                };
+
+                try {
+                    
+                    const createdChat = await Chat.create(chatData)
+
+                } catch (error) {
+                    
                 }
+
             }
 
     }
