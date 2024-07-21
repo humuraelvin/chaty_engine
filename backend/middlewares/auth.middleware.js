@@ -11,14 +11,15 @@ const protectRoute = asyncHandler(async(req, res, next) =>
             req.headers.authorization.startsWith("Bearer")
         ) {
             
-            token = req.headers.authorization.split(" ")[1];
+            try {
+                token = req.headers.authorization.split(" ")[1];
 
             const validToken = jwt.verify(token, process.env.JWT_SECRET_KEY)
 
-            if (validToken) {
-                res.status(200)
-            }else{
-                throw new Error("Not authorized Invalid token provided")
+            req.user = await User.findById(validToken.id).select("-password")
+            
+            } catch (error) {
+                
             }
 
         }
