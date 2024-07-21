@@ -12,7 +12,9 @@ const accessChat = asyncHandler(async( req, res) =>
             console.log("UserId param not sent with request");
             return res.sendStatus(400);
 
-            var isChat = await Chat.find({
+        }
+
+          var isChat = await Chat.find({
                 isGroupChat:false,
                 $and: [
                     { users: { $elemMatch: { $eq: req.user._id } } },
@@ -21,7 +23,6 @@ const accessChat = asyncHandler(async( req, res) =>
             })
               .populate("users", "-password")
               .populate("latestMessage")
-        }
 
     }
 )
