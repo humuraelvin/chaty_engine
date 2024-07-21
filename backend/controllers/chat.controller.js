@@ -147,5 +147,9 @@ const renameGroup = asyncHandler(async(req, res) =>
 
 })
 
+const removeFromGroup = asyncHandler(async(req, res) => {
+    
+})
+
 
 
