@@ -27,7 +27,17 @@ const accessChat = asyncHandler(async( req, res) =>
             isChat = await User.populate(isChat, {
                 path: "latestMessage.sender",
                 select: "name pic email"
-            })
+            });
+
+            if (isChat.length > 0) {
+                res.send(isChat[0])
+            }else{
+                var chatData = {
+                    chatName: "sender",
+                    isGroupChat: false,
+                    users: [req.user._id, userId]
+                }
+            }
 
     }
 )
