@@ -19,6 +19,8 @@ const accessChat = asyncHandler(async( req, res) =>
                     { users: { $elemMatch: { $eq: userId } } },
                 ],
             })
+              .populate("users", "-password")
+              .populate("latestMessage")
         }
 
     }
