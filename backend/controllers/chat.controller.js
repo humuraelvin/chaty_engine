@@ -44,10 +44,13 @@ const accessChat = asyncHandler(async( req, res) =>
                     const FullChat = await Chat.findOne({ _id:createdChat }).populate(
                         "users",
                         "-password"
-                    )
+                    );
+
+                    res.status(200).json(FullChat)
 
                 } catch (error) {
-                    
+                    res.status(400)
+                    throw new Error(error.message)
                 }
 
             }
