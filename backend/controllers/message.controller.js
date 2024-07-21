@@ -31,5 +31,25 @@ const sendMessage = asyncHandler(async(req, res) =>
             return res.sendStatus(400)
         }
 
+        var newMessage = {
+            sender: req.user._id,
+            content: content,
+            chat: chatId,
+        }
+
+        try {
+            
+            var message = await Message.create(newMessage)
+
+            message = await message.populate("sender", "name pic").execPopulate();
+            message = await message.populate("chat").execPopulate();
+            message = await User.populate(message, {
+                path:g
+            })
+
+        } catch (error) {
+            
+        }
+
     }
 )
